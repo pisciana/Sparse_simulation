@@ -8,7 +8,6 @@
 
 *script_create_slurm.py 
 
-
 *script_create_input.py
 
 *simulacao.py
@@ -33,7 +32,7 @@
 
 
 <h1>Passo a passo para exibir resultados em gráfico</h1>
-Arquivos utilizados para gerar os gráficos:
+<b>Arquivos utilizados para gerar os gráficos:</b>
 
 *gerar_grafico_de_pkl.py
 
