@@ -1,7 +1,5 @@
 /********************************************************************************************************
-* 
 * Passo-a-passo para a simulacao da aprendizagem com esparsialidade no supercomputador NPAD
-*
 *********************************************************************************************************/
 Arquivos utilizados para a simulação:
 ana_clusterscript01
@@ -28,9 +26,7 @@ modelo.py
 
 
 /********************************************************************************************************
-* 
 * Passo-a-passo para exibir resultados em gráfico
-*
 *********************************************************************************************************/
 Arquivos utilizados para gerar os gráficos:
 
