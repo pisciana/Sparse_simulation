@@ -59,10 +59,17 @@ class Model:
     def reduce_sparsness(self):
         out_dim = int(self.y.get_shape()[1])
         if(self.sparseness > 0.0):
-            self.cross_entropy += self.sparse_fact * tf.reduce_sum(tf.multiply(self.costmask.astype(np.float32),tf.square(self.var_list[0])))
-        
-        self.train_step = tf.train.GradientDescentOptimizer(self.learning_rate*out_dim*self.learning_rate).minimize(self.cross_entropy)
+            self.cross_entropy += self.sparseness * self.sparse_fact * tf.reduce_sum(tf.multiply(self.costmask.astype(np.float32),tf.square(self.var_list[0])))
+            self.train_step = tf.train.GradientDescentOptimizer(self.learning_rate*out_dim*self.learning_rate).minimize(self.cross_entropy)
+            print('Reduce Sparseness')
+            print(self.cross_entropy )
+
 
     def increase_sparsness(self):
         out_dim = int(self.y.get_shape()[1])
-        self.train_step = tf.train.GradientDescentOptimizer(self.learning_rate*out_dim*self.learning_rate).minimize(self.cross_entropy)
+        if(self.sparseness > 0.0):
+            self.cross_entropy += (1.0 + self.sparseness) * self.sparse_fact * tf.reduce_sum(tf.multiply(self.costmask.astype(np.float32),tf.square(self.var_list[0])))
+            self.train_step = tf.train.GradientDescentOptimizer(self.learning_rate*out_dim*self.learning_rate).minimize(self.cross_entropy)
+            print('Increase Sparseness')
+            print(self.cross_entropy )
+
