@@ -1,11 +1,18 @@
 <h1>Passo a passo para a simulacao da aprendizagem com esparsialidade no supercomputador NPAD </h1>
 
 Arquivos utilizados para a simulação:
+
 *ana_clusterscript01
+
 *process_cluster_npad.py
+
 *script_create_slurm.py 
+
+
 *script_create_input.py
+
 *simulacao.py
+
 *modelo.py
 
 <b>passo-a-passo simulacao</b>
