@@ -15,7 +15,7 @@
 
 *modelo.py
 
-<b>passo-a-passo simulacao</b>
+<b>Passo a passo simulacao:</b>
 1) Gerar os arquivos slurm através do script_create_slurm.py 
 
 2) Copiar todos os *.slurm para o servidor
