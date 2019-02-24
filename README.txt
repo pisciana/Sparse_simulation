@@ -3,7 +3,7 @@
 * Passo-a-passo para a simulacao da aprendizagem com esparsialidade no supercomputador NPAD
 *
 *********************************************************************************************************/
-Arquivos utilizados:
+Arquivos utilizados para a simulação:
 ana_clusterscript01
 process_cluster_npad.py
 script_create_slurm.py 
@@ -11,7 +11,7 @@ script_create_input.py
 simulacao.py
 modelo.py
 
-
+// passo-a-passo simulacao
 1) Gerar os arquivos slurm através do script_create_slurm.py 
 
 2) Copiar todos os *.slurm para o servidor
@@ -25,4 +25,12 @@ modelo.py
 6) Executar cada slurm com o comando: sbach nome_slurm.slurm
 
 7) Para verificar se o ṕrocesso está executando, utilizar o comando: squeue -u nome_do_usuario
+
+
+/********************************************************************************************************
+* 
+* Passo-a-passo para exibir resultados em gráfico
+*
+*********************************************************************************************************/
+Arquivos utilizados para gerar os gráficos:
 
