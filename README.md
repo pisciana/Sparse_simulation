@@ -1,4 +1,4 @@
-<h1>Passo a passo para a simulacao da aprendizagem com esparsialidade no supercomputador NPAD<h1>
+<h1>Passo a passo para a simulacao da aprendizagem com esparsialidade no supercomputador NPAD </h1>
 
 Arquivos utilizados para a simulação:
 *ana_clusterscript01
