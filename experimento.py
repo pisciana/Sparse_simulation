@@ -9,7 +9,7 @@ Created on Tue Feb 12 21:31:17 2019
 import tensorflow as tf
 import numpy as np  
 import matplotlib.pyplot as plt
-from model_low_sparse import Model
+from modelo import Model
 
 
   
@@ -21,32 +21,17 @@ def buildRandomBoolDataSet(Nsamples=2000,Dinput=1000,seed=0):
     labels = np.float32(labels)
     dataset = tf.data.Dataset.from_tensor_slices((features,labels))
     return dataset
-#%%  
+
+
 sess = tf.InteractiveSession()
 input_dim = 100
-learning_rate = 0.1
+learning_rate = 0.5
 model_seed = 0
 data_seed = 0
-nsteps = 10
-max_count = 10
-sparse = np.arange(0.0, 0.2, 0.1)
-
-num_samplesV = np.arange(1,3)
-data_seedV = np.arange(3)
-acc = np.ones((len(sparse),len(num_samplesV),len(data_seedV))) * np.nan
-
-#%%
-
-
-sess = tf.InteractiveSession()
-input_dim = 10
-learning_rate = 0.1
-model_seed = 0
-data_seed = 0
-nsteps = 10
-max_count = 10
-num_samplesV = 8
-sparse = 0.4
+nsteps = 5
+max_count = 100
+num_samplesV = 100
+sparse = 0.5
 
 
 data_seedV = np.arange(3)
@@ -56,26 +41,39 @@ myIter = myDataSet.make_initializable_iterator()
 myFeatures, myLabels = myIter.get_next()               
 x = myFeatures
 y_ = myLabels        
-print(y_)      
+    
 
 
 model = Model(x, y_, sparse, learning_rate, seed=data_seed) # simple 2-layer network
-model.set_vanilla_loss()              
-# initialize variables
-sess.run(tf.global_variables_initializer())    
+model.set_vanilla_loss()        
+
+sess.run(tf.global_variables_initializer())   
 sess.run(myIter.initializer)
-#acc[0] = model.accuracy.eval()            
-count  = 1            
+
+count  = 1       
 for ss in np.arange(1,nsteps+1):
     sess.run(myIter.initializer)
-    model.reduce_sparsness()
-    model.train_step.run()
-    #model.aumenta spar
+    #model.reduce_sparsness()
+    model.train_step.run()    
+    
     sess.run(myIter.initializer)
-    #acc[ss] = model.accuracy.eval()
-acc = model.accuracy.eval()  
-print(acc)
+    acc = model.accuracy.eval() 
+    
+    sess.run(myIter.initializer)    
+    ce = model.cross_entropy.eval()  
 
+
+    print("acuracia: {} / Entropia: {}".format(acc,ce))
+    #sess.run(myIter.initializer)
+    #y = model.y.eval()  
+    
+
+    #np.savetxt('filesemreduz{}.txt'.format(ss), y, delimiter=",")
+    #arquivo.write(y)#
+    #   arquivo.close()
+    
+    #acc[ss] = model.accuracy.eval()
+sess.close()
 
 # %%
 for zz,sparseness in enumerate(sparse):
