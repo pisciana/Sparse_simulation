@@ -36,3 +36,7 @@
 
 *gerar_grafico_de_pkl.py
 
+
+Sources baseados em https://github.com/ariseff/overcoming-catastrophic/
+
+
