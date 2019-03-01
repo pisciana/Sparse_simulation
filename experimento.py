@@ -28,10 +28,10 @@ input_dim = 100
 learning_rate = 0.5
 model_seed = 0
 data_seed = 0
-nsteps = 5
+nsteps = 2
 max_count = 100
-num_samplesV = 100
-sparse = 0.5
+num_samplesV = 1000
+sparse = 0.1
 
 
 data_seedV = np.arange(3)
@@ -56,14 +56,20 @@ for ss in np.arange(1,nsteps+1):
     #model.reduce_sparsness()
     model.train_step.run()    
     
+    
     sess.run(myIter.initializer)
     acc = model.accuracy.eval() 
     
     sess.run(myIter.initializer)    
     ce = model.cross_entropy.eval()  
 
+    sess.run(myIter.initializer)    
+    w1 = model.W1.eval()  
+
 
     print("acuracia: {} / Entropia: {}".format(acc,ce))
+    print("W1:{}".format(w1))
+    print("***************ANTES********************")
     #sess.run(myIter.initializer)
     #y = model.y.eval()  
     

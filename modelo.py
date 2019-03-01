@@ -88,7 +88,6 @@ class Model:
             self.costmask /= np.sum(self.costmask)
             self.mask[self.costmask<0] = 0.0
             self.W1 = tf.multiply(self.W1,self.mask)
-
             self.cross_entropy += self.sparse_fact * tf.reduce_sum(tf.multiply(self.costmask.astype(np.float32),tf.square(self.W1)))
            
         """
